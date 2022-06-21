@@ -1,7 +1,13 @@
 body{
-    background-image: url(/12321.jpg);
+    background-image: url(/img1.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
 }
 
 .letras{
     color: azure;
 }
+
+

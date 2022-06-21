@@ -4,38 +4,68 @@ $(document).ready(function () {
         event.preventDefault();
 
         let valueInput = $("#heroInput").val();
-        
 
-        $.ajax({
-            type: "GET",
-            url: "http://www.omdbapi.com/?&apikey=ba305978&t=" + valueInput,
-            success: function (data) {
 
-                let Titulo = data.Title;
-                let imagen = data.Poster;
+
+       
+
+
+            $.ajax({
+                type: "GET",
+                dataType: "json",
+                url: "http://www.omdbapi.com/?apikey=ba305978&s=" +valueInput ,
                 
-                console.log(data)
+                
+                
+                //"http://www.omdbapi.com/?t=" + valueInput + "&apikey=ba305978&y=2016",
+    
+                success: function (data) {
+                   
+                    
+    
+    
+                    
+    
+                    console.log(data)  
+    
+                    var pelis = data.Search;
+                    for (var i = 0; i < pelis.length; i++) {
+                        console.log(pelis[i].Title);
 
+                        let Titulo = pelis[i].Title;
+                        let imagen = pelis[i].Poster;
 
-                $("#heroInfo").html(`
-  
-                    <div class="card mb-3 " style="max-width: 640px;">
-                      <div class="row g-0">
-                         
-                          
-                          <div class="col-md-10">
-                          <div class="card-body">
-                              <h5 class="card-title ">${Titulo}</h5>
-                              <img src="${imagen}" class="img-fluid rounded-start" alt="...">
-                          </div>
+                        $("#heroInfo").html(`
+      
+                        <div class="card" style="width: 18rem;">
+                        <img src="${imagen}" class="card-img-top" alt="...">
+                        <div class="card-body">
+                          <h1>${Titulo}</h1>
+                        </div>
                       </div>
-                      </div>
+
+                      
   
                   `)
 
 
-            },
-        })
+
+
+                    }
+
+                   
+                    
+
+                   
+    
+    
+                },
+            })
+
+        
+
+
+        
 
 
     })
@@ -43,3 +73,4 @@ $(document).ready(function () {
 
 
 })
+
